@@ -2,8 +2,10 @@
     // abrimos la conexion a la bd
     require_once("../../controller/open_connection.php");
 
+    
+
     // sacamos todos los registros
-    $queryList = "SELECT * FROM tbl_usuarios";
+    $queryList = "SELECT * FROM tbl_usuarios ORDER BY nombres";
     $result = pg_query($dbconn, $queryList);
 
     //verificamos si la consulta es correcta 

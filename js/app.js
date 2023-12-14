@@ -21,27 +21,37 @@ $(document).ready(function () {
                     
                     let platillaInHtml = "";
                     let dataJsonSearch = JSON.parse(response);
-                    console.log(dataJsonSearch);
+
                     // verifico si el json devuelto contiene la info
                     if(!$.isEmptyObject(dataJsonSearch)){
                         dataJsonSearch.forEach(dataJsonSearch => {
                             platillaInHtml += `
-                            <td>${dataJsonSearch.nombres}</td>
-                            <td>${dataJsonSearch.apellidos}</td>
-                            <td>${dataJsonSearch.correo}</td>
-                            <td>${dataJsonSearch.telefono}</td>`;
-
-                            $('.info-search').show();
+                                <tr>
+                                    <td>${dataJsonSearch.nombres}</td>
+                                    <td>${dataJsonSearch.apellidos}</td>
+                                    <td>${dataJsonSearch.correo}</td>
+                                    <td>${dataJsonSearch.telefono}</td>
+                                    <td>
+                                        <a href="#editClienteModal" class="edit" 
+                                            onclick="asignationToUpdate(${dataJsonSearch.id},'${dataJsonSearch.nombres}',
+                                            '${dataJsonSearch.apellidos}','${dataJsonSearch.correo}',${dataJsonSearch.telefono})"
+                                            data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                        </a>
+                                        <a href="#deleteClienteModal" class="delete" onclick="asignationID(${dataJsonSearch.id})" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            `;
                         });
                     }else{
-                        $('.info-search').hide();
                         platillaInHtml+= `
                             <span class="not-found">No encontrado</span>
                         `;
                     }
-
+                    //se muestra la busqueda en tiempo real en la tabla 
                     $('#list-tableBD').html(platillaInHtml);
-                    $('#search').show();
                 }
             });
         }else{
@@ -60,7 +70,7 @@ $(document).ready(function () {
             success: function (response) {
                 // este json obtiene toda la informacion de la tabla
                 var infoJson = JSON.parse(response); 
-                console.log(infoJson);
+
                 // plantilla para mostrar en el html
                 plantilla = ``;
     
@@ -166,8 +176,6 @@ $(document).ready(function () {
                 showInfoTable();
             }
         });
-
-        console.log(id_global);
     });
 });
 
@@ -177,8 +185,6 @@ var id_global = null;
 function asignationID(id){
     id_global = id;
 }
-
-
 // funcion que rellena los campos del modal para editar un registro
 function asignationToUpdate(id,nombres,apellidos,correo,celular){
     id_global = id;

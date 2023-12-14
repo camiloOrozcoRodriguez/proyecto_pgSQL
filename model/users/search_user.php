@@ -3,8 +3,12 @@
 
     $search = pg_escape_string($_POST['dataObjetoSearch']['nombres']);
     
-    $querySearch = "SELECT * FROM tbl_usuarios WHERE nombres LIKE '$search%';";
+    
+    $querySearch = "SELECT * FROM tbl_usuarios 
+    WHERE nombres LIKE '$search%' OR apellidos LIKE '$search%' OR correo LIKE '$search%';";
+
     $result = pg_query($dbconn, $querySearch);
+    
     
     if(!$result){
         print "Error en la consulta: " .pg_last_error($dbconn);
