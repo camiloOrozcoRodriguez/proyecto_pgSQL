@@ -97,7 +97,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-					<input type="submit" class="btn btn-success" value="añadir" id="addClient">
+					<input type="button" class="btn btn-success" value="añadir" id="addClient">
 				</div>
 			</form>
 		</div>
@@ -134,7 +134,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Edit" id="editClient">
+					<input type="button" class="btn btn-info" value="Edit" id="editClient">
 				</div>
 			</form>
 		</div>
@@ -157,7 +157,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete" id="deleteModal">
+					<input type="button" class="btn btn-danger" value="Delete" id="deleteModal">
 				</div>
 			</form>
 		</div>

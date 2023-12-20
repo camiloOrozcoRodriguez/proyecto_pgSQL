@@ -96,6 +96,14 @@ $(document).ready(function () {
                         </tr>    
                     `;
                 });
+                // en caso de que no haya ningun registro en la bd, la platilla
+                //muestra otro mensaje
+                
+                if( $(infoJson).empty() ){
+                    plantilla+= `
+                            <span class="not-found">Agregue un cliente</span>
+                    `;
+                }
     
                 // la plantilla es mostrada en el html:
                 $('#list-tableBD').html(plantilla);
